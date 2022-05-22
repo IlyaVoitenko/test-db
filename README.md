@@ -1,3 +1,6 @@
+yarn start - starting react app then you have to write yarn server - starting db.json
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

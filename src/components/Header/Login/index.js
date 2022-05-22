@@ -1,8 +1,13 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { isAuthClientAction } from '../../../store/createActions';
 import { Button, Modal, Form } from 'react-bootstrap';
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
+  const [login, setLogin] = useState('admin');
+  const [password, setPassword] = useState('admin');
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -21,14 +26,35 @@ const Login = () => {
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Login</Form.Label>
-                <Form.Control type="text" placeholder="Enter Login" />
+                <Form.Control
+                  type="text"
+                  placeholder="Enter Login"
+                  onChange={({ target }) => {
+                    setLogin(target.value);
+                  }}
+                />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  onChange={({ target }) => {
+                    setPassword(target.value);
+                  }}
+                />
               </Form.Group>
-
-              <Button variant="primary" type="submit">
+              <Button
+                show={show}
+                variant="primary"
+                // type="submit"
+                onClick={() => {
+                  dispatch(
+                    isAuthClientAction({ login: login, password: password })
+                  );
+                  handleClose();
+                }}
+              >
                 Send
               </Button>
             </Form>

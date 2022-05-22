@@ -5,11 +5,25 @@
             "firstName":"Jack",
             "lastName":"Smit",
             "phoneNumber":"+38000000",
-            "locationFrom":"Ukraine",
-            "locationTo":"USA",
-            "quantity":"10000",
-            "currency":"usd",
-            "status":"done",
+            "transactions":[
+                {
+                "idTransactions":"1",
+                "locationFrom":"Ukraine",
+                "locationTo":"USA",
+                "quantity":"10000",
+                "currency":"usd",
+                "transactionDate":"01/12/2020",
+                "status":"done"
+                },{
+                "idTransactions":"2",
+                "locationFrom":"Britan",
+                "locationTo":"USA",
+                "quantity":"100",
+                "currency":"usd",
+                "transactionDate":"31/12/2020",
+                "status":"done"
+                }
+            ],
             "auth":{
                 "login":"admin",
                 "password":"admin"
@@ -20,6 +34,25 @@
             "firstName":"Peter",
             "lastName":"Smit",
             "phoneNumber":"+77000000",
+            "transactions":[
+                {
+                "idTransactions":"1",
+                "locationFrom":"Ukraine",
+                "locationTo":"Ukraine",
+                "quantity":"10444000",
+                "currency":"usd",
+                "transactionDate":"24/12/2020",
+                "status":"done"
+                },{
+                "idTransactions":"2",
+                "locationFrom":"USA",
+                "locationTo":"USA",
+                "quantity":"100",
+                "currency":"usd",
+                "transactionDate":"11/12/2020",
+                "status":"done"
+                }
+            ],
             "locationFrom":"Ukraine",
             "locationTo":"Poland",
             "quantity":"15000",
