@@ -1,14 +1,14 @@
 import { useSelector } from 'react-redux';
 import style from './MainPage.module.css';
+import { getStateClientByPhoneNumber } from './selectors';
 import InfoClient from '../InfoClient';
 import SelectedTransaction from '../InfoClient/SelectedTransaction';
 import Transactions from '../InfoClient/Transactions';
 
 const MainPage = () => {
-  const clientByPhoneNumber = useSelector((state) => state.clientByPhoneNumber);
+  const clientByPhoneNumber = useSelector(getStateClientByPhoneNumber);
   const isAuthManager = useSelector((state) => state.isAuthManager);
   const isQuerySend = useSelector((state) => state.isQuerySend);
-  console.log('isQuerySend :', isQuerySend);
   const { transactions } = clientByPhoneNumber || [];
 
   return (
