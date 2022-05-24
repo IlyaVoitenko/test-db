@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { Table } from 'react-bootstrap';
 import { getSelectedTransactionAction } from '../../../store/createActions';
 import { getStateClientByPhoneNumber } from '../../MainPage/selectors';
 import style from './Transactions.module.css';
@@ -6,32 +7,37 @@ import style from './Transactions.module.css';
 const Transactions = ({ transactions }) => {
   const dispatch = useDispatch();
   const selectedClient = useSelector(getStateClientByPhoneNumber);
-  console.log('selectedClient :', selectedClient);
-  const { firstName, lastName, phoneNumber } = selectedClient;
+  const { firstName, lastName } = selectedClient;
   return (
     <div className={style.container}>
-      {transactions.map((transaction, index) => {
-        return (
-          <div>
-            <p> firstName :{firstName}</p>
-            <p> lastName :{lastName}</p>
-            <p> phone Number :{phoneNumber}</p>
-            <p> quantity :{transaction.quantity}</p>
-            <p> currency :{transaction.currency}</p>
-            <button
-              className={style.btnTransaction}
-              key={transaction.idTransactions}
-              onClick={() => {
-                dispatch(
-                  getSelectedTransactionAction(transaction.idTransactions)
-                );
-              }}
-            >
-              {index + 1}
-            </button>
-          </div>
-        );
-      })}
+      <Table hover>
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Quantity</th>
+            <th>Currency</th>
+          </tr>
+        </thead>
+        <tbody>
+          {transactions.map((transaction, index) => {
+            return (
+              <tr
+                onClick={() =>
+                  dispatch(
+                    getSelectedTransactionAction(transaction.idTransactions)
+                  )
+                }
+              >
+                <td>{firstName}</td>
+                <td>{lastName}</td>
+                <td>{transaction.quantity}</td>
+                <td>{transaction.currency}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
     </div>
   );
 };
