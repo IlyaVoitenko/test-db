@@ -1,18 +1,22 @@
 import { useSelector } from 'react-redux';
-import InfoClient from '../InfoClient';
 import style from './MainPage.module.css';
+import InfoClient from '../InfoClient';
 import SelectedTransaction from '../InfoClient/SelectedTransaction';
 import Transactions from '../InfoClient/Transactions';
 
 const MainPage = () => {
-  const isAuth = useSelector((state) => state.authClient);
-  const { transactions } = isAuth || [];
+  const clientByPhoneNumber = useSelector((state) => state.clientByPhoneNumber);
+  const isAuthManager = useSelector((state) => state.isAuthManager);
+  const isQuerySend = useSelector((state) => state.isQuerySend);
+  console.log('isQuerySend :', isQuerySend);
+  const { transactions } = clientByPhoneNumber || [];
+
   return (
     <div>
-      {isAuth ? <InfoClient client={isAuth} /> : null}
+      {isAuthManager ? <InfoClient /> : null}
       <div className={style.containerTransactions}>
-        {isAuth ? <Transactions transactions={transactions} /> : null}
-        {isAuth ? <SelectedTransaction /> : null}
+        {isQuerySend ? <Transactions transactions={transactions} /> : null}
+        {isQuerySend ? <SelectedTransaction /> : null}
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+npm install - download dependencies for the app 
 yarn start - starting react app then you have to write yarn server - starting db.json
 
 

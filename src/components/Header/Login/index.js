@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { isAuthClientAction } from '../../../store/createActions';
+import { isAuthManagerAction } from '../../../store/createActions';
 import { Button, Modal, Form } from 'react-bootstrap';
 
 const Login = () => {
@@ -49,9 +49,7 @@ const Login = () => {
                 variant="primary"
                 // type="submit"
                 onClick={() => {
-                  dispatch(
-                    isAuthClientAction({ login: login, password: password })
-                  );
+                  dispatch(isAuthManagerAction());
                   handleClose();
                 }}
               >

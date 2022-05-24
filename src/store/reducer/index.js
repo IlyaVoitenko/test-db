@@ -1,12 +1,18 @@
 import {
+  IS_QUERY,
   GET_CLIENTS,
-  AUTH_CLIENT,
+  GET_CLIENT_DATA,
+  IS_AUTH_MANAGER,
   GET_SELECTED_TRANSACTION,
+  GET_CLIENT_BY_PHONE_NUMBER,
 } from '../createTypes';
 
 const initialState = {
   clients: [],
-  authClient: null,
+  clientData: null,
+  isAuthManager: false,
+  clientByPhoneNumber: null,
+  isQuerySend: false,
   selectedTransaction: {},
 };
 
@@ -14,10 +20,21 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_CLIENTS:
       return { ...state, clients: [...action.payload] };
-    case AUTH_CLIENT:
+    case IS_AUTH_MANAGER:
+      return { ...state, isAuthManager: true };
+    case GET_CLIENT_BY_PHONE_NUMBER:
       return {
         ...state,
-        authClient: state.clients.find(
+        clientByPhoneNumber: state.clients.find(
+          (item) => item.phoneNumber === action.payload
+        ),
+      };
+    case IS_QUERY:
+      return { ...state, isQuerySend: true };
+    case GET_CLIENT_DATA:
+      return {
+        ...state,
+        clientData: state.clients.find(
           (data) =>
             data.auth.login === action.payload.login &&
             data.auth.password === action.payload.password
@@ -26,7 +43,7 @@ const reducer = (state = initialState, action) => {
     case GET_SELECTED_TRANSACTION:
       return {
         ...state,
-        selectedTransaction: state.authClient.transactions.find(
+        selectedTransaction: state.clientByPhoneNumber.transactions.find(
           (item) => item.idTransactions === action.payload
         ),
       };
