@@ -18,8 +18,8 @@ export function isAuthClientAction(payload) {
 export function getSelectedTransactionAction(payload) {
   return { type: GET_SELECTED_TRANSACTION, payload };
 }
-export function isAuthManagerAction() {
-  return { type: IS_AUTH_MANAGER };
+export function isAuthManagerAction(payload) {
+  return { type: IS_AUTH_MANAGER, payload };
 }
 export function isQuerySendAction() {
   return { type: IS_QUERY };

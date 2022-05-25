@@ -29,7 +29,7 @@ const reducer = (state = initialState, action) => {
     case IS_FIND_CLIENT:
       return { ...state, isFindClient: action.payload };
     case IS_AUTH_MANAGER:
-      return { ...state, isAuthManager: true };
+      return { ...state, isAuthManager: action.payload };
     case GET_CLIENT_BY_PHONE_NUMBER:
       return {
         ...state,

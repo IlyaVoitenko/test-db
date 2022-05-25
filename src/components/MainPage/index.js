@@ -1,12 +1,14 @@
 import { useSelector } from 'react-redux';
 import style from './MainPage.module.css';
+import { getStateIsAuthManager } from '../Header/Login/selectors';
+import { getStateIsQuerySend } from './selectors';
 import SearchClient from '../SearchClient';
 import SelectedTransaction from '../SearchClient/SelectedTransaction';
 import Transactions from '../SearchClient/Transactions';
 
 const MainPage = () => {
-  const isAuthManager = useSelector((state) => state.isAuthManager);
-  const isQuerySend = useSelector((state) => state.isQuerySend);
+  const isAuthManager = useSelector(getStateIsAuthManager);
+  const isQuerySend = useSelector(getStateIsQuerySend);
 
   return (
     <div>
