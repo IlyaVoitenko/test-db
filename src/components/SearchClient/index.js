@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   isQuerySendAction,
   getClientByPhoneNumber,
+  isCheckDetailInfoAction,
   isFindClient,
 } from '../../store/createActions';
 
@@ -36,6 +37,7 @@ const SearchClient = () => {
       />
       <button
         onClick={() => {
+          dispatch(isCheckDetailInfoAction(false));
           dispatch(isFindClient(false));
           dispatch(isQuerySendAction());
           dispatch(getClientByPhoneNumber(phone(numberPhoneClient)));

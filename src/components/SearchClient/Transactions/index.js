@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Table } from 'react-bootstrap';
-import { isFindClientState } from './selectors';
 import {
   getSelectedTransactionAction,
   isCheckDetailInfoAction,
