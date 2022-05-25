@@ -3,7 +3,9 @@ import {
   GET_CLIENTS,
   GET_CLIENT_DATA,
   IS_AUTH_MANAGER,
+  IS_FIND_CLIENT,
   GET_SELECTED_TRANSACTION,
+  IS_CHECK_DETAIL_INFO,
   GET_CLIENT_BY_PHONE_NUMBER,
 } from '../createTypes';
 
@@ -24,4 +26,10 @@ export function isQuerySendAction() {
 }
 export function getClientByPhoneNumber(payload) {
   return { type: GET_CLIENT_BY_PHONE_NUMBER, payload };
+}
+export function isCheckDetailInfoAction(payload) {
+  return { type: IS_CHECK_DETAIL_INFO, payload };
+}
+export function isFindClient(payload) {
+  return { type: IS_FIND_CLIENT, payload };
 }

@@ -4,7 +4,7 @@
             "id":"1" ,
             "firstName":"Jack",
             "lastName":"Smit",
-            "phoneNumber":"+38000000",
+            "phoneNumber":"+380000000",
             "transactions":[
                 {
                 "idTransactions":"1",
@@ -33,7 +33,7 @@
             "id":"2" ,
             "firstName":"Peter",
             "lastName":"Smit",
-            "phoneNumber":"+77000000",
+            "phoneNumber":"+380789000",
             "transactions":[
                 {
                 "idTransactions":"1",

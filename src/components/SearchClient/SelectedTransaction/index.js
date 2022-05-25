@@ -1,11 +1,17 @@
 import { useSelector } from 'react-redux';
 import style from './SelectedTransaction.module.css';
+import {
+  getStateIsCheckDetailInfo,
+  getStateSelectedTransaction,
+} from './selectors';
 import { getStateClientByPhoneNumber } from '../../MainPage/selectors';
 import { Table } from 'react-bootstrap';
 
 const SelectedTransaction = () => {
-  const selectedTransaction = useSelector((state) => state.selectedTransaction);
+  const selectedTransaction = useSelector(getStateSelectedTransaction);
   const clientByPhoneNumber = useSelector(getStateClientByPhoneNumber);
+  const isCheckDetailInfo = useSelector(getStateIsCheckDetailInfo);
+
   const { firstName, lastName } = clientByPhoneNumber || {};
   const {
     transactionDate,
@@ -16,7 +22,8 @@ const SelectedTransaction = () => {
     status,
     locationFrom,
   } = selectedTransaction || {};
-  return (
+
+  return isCheckDetailInfo ? (
     <div className={style.container}>
       <span>Deatail info :</span>
       <Table>
@@ -60,6 +67,6 @@ const SelectedTransaction = () => {
         </tbody>
       </Table>
     </div>
-  );
+  ) : null;
 };
 export default SelectedTransaction;

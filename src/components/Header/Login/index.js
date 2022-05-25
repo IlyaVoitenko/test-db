@@ -49,7 +49,11 @@ const Login = () => {
                 variant="primary"
                 // type="submit"
                 onClick={() => {
-                  dispatch(isAuthManagerAction());
+                  if (login === 'admin' && password === 'admin') {
+                    dispatch(isAuthManagerAction());
+                    return handleClose();
+                  }
+                  alert("You aren't a manager");
                   handleClose();
                 }}
               >

@@ -1,14 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Table } from 'react-bootstrap';
-import { getSelectedTransactionAction } from '../../../store/createActions';
+import { isFindClientState } from './selectors';
+import {
+  getSelectedTransactionAction,
+  isCheckDetailInfoAction,
+} from '../../../store/createActions';
 import { getStateClientByPhoneNumber } from '../../MainPage/selectors';
 import style from './Transactions.module.css';
 
-const Transactions = ({ transactions }) => {
+const Transactions = () => {
   const dispatch = useDispatch();
   const selectedClient = useSelector(getStateClientByPhoneNumber);
-  const { firstName, lastName } = selectedClient;
-  return (
+  const clientByPhoneNumber = useSelector(getStateClientByPhoneNumber);
+
+  const { transactions } = clientByPhoneNumber || [];
+  const { firstName, lastName } = selectedClient || {};
+
+  return transactions ? (
     <div className={style.container}>
       <Table hover>
         <thead>
@@ -20,14 +28,16 @@ const Transactions = ({ transactions }) => {
           </tr>
         </thead>
         <tbody>
-          {transactions.map((transaction, index) => {
+          {transactions.map((transaction) => {
             return (
               <tr
-                onClick={() =>
+                key={transaction.idTransactions}
+                onClick={() => {
                   dispatch(
                     getSelectedTransactionAction(transaction.idTransactions)
-                  )
-                }
+                  );
+                  dispatch(isCheckDetailInfoAction(true));
+                }}
               >
                 <td>{firstName}</td>
                 <td>{lastName}</td>
@@ -39,6 +49,8 @@ const Transactions = ({ transactions }) => {
         </tbody>
       </Table>
     </div>
+  ) : (
+    <span> Number phone of client is not found</span>
   );
 };
 export default Transactions;
