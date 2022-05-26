@@ -65,7 +65,6 @@ const Login = () => {
                   setLogin('');
                   setPassword('');
                   dispatch(isAuthManagerAction(false));
-                  handleClose();
                 }}
               >
                 Send
