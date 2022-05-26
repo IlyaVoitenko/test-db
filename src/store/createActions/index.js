@@ -21,8 +21,8 @@ export function getSelectedTransactionAction(payload) {
 export function isAuthManagerAction(payload) {
   return { type: IS_AUTH_MANAGER, payload };
 }
-export function isQuerySendAction() {
-  return { type: IS_QUERY };
+export function isQuerySendAction(payload) {
+  return { type: IS_QUERY, payload };
 }
 export function getClientByPhoneNumber(payload) {
   return { type: GET_CLIENT_BY_PHONE_NUMBER, payload };

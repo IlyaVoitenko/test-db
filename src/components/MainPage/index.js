@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import style from './MainPage.module.css';
-import { getStateIsAuthManager } from '../Header/Login/selectors';
+import { getStateIsAuthManager } from '../Header/selectors';
 import { getStateIsQuerySend } from './selectors';
 import SearchClient from '../SearchClient';
 import SelectedTransaction from '../SearchClient/SelectedTransaction';

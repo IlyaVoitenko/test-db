@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { isAuthManagerAction } from '../../../store/createActions';
-import { getStateIsAuthManager } from './selectors';
+import { getStateIsAuthManager } from '../selectors';
 import { Button, Modal, Form } from 'react-bootstrap';
 
 const Login = () => {
@@ -57,9 +57,13 @@ const Login = () => {
                 onClick={() => {
                   if (login === 'admin' && password === 'admin') {
                     dispatch(isAuthManagerAction(true));
+                    setLogin('');
+                    setPassword('');
                     return handleClose();
                   }
                   alert("You aren't a manager");
+                  setLogin('');
+                  setPassword('');
                   dispatch(isAuthManagerAction(false));
                   handleClose();
                 }}

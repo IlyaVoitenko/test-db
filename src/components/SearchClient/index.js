@@ -39,7 +39,7 @@ const SearchClient = () => {
         onClick={() => {
           dispatch(isCheckDetailInfoAction(false));
           dispatch(isFindClient(false));
-          dispatch(isQuerySendAction());
+          dispatch(isQuerySendAction(true));
           dispatch(getClientByPhoneNumber(phone(numberPhoneClient)));
           if (clientByPhoneNumber !== {} || clientByPhoneNumber !== null) {
             return dispatch(isFindClient(true));

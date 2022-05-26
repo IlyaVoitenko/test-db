@@ -38,7 +38,7 @@ const reducer = (state = initialState, action) => {
         ),
       };
     case IS_QUERY:
-      return { ...state, isQuerySend: true };
+      return { ...state, isQuerySend: action.payload };
     case GET_CLIENT_DATA:
       return {
         ...state,
