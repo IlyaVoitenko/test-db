@@ -4,15 +4,15 @@ import {
   getStateIsCheckDetailInfo,
   getStateSelectedTransaction,
 } from './selectors';
-import { getStateClientByPhoneNumber } from '../../MainPage/selectors';
+import { getStateClientByIdUser } from '../../MainPage/selectors';
 import { Table } from 'react-bootstrap';
 
 const SelectedTransaction = () => {
   const selectedTransaction = useSelector(getStateSelectedTransaction);
-  const clientByPhoneNumber = useSelector(getStateClientByPhoneNumber);
+  const clientByIdUser = useSelector(getStateClientByIdUser);
   const isCheckDetailInfo = useSelector(getStateIsCheckDetailInfo);
 
-  const { firstName, lastName } = clientByPhoneNumber || {};
+  const { firstName, lastName } = clientByIdUser || {};
   const {
     transactionDate,
     idTransactions,

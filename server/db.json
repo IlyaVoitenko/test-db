@@ -1,67 +1,65 @@
 {
-    "clients":[
+    "NamesClients":[
         {
-            "id":"1" ,
-            "firstName":"Jack",
-            "lastName":"Smit",
-            "phoneNumber":"+380000000",
-            "transactions":[
-                {
-                "idTransactions":"1",
-                "locationFrom":"Ukraine",
-                "locationTo":"USA",
-                "quantity":"10000",
-                "currency":"usd",
-                "transactionDate":"01/12/2020",
-                "status":"done"
-                },{
-                "idTransactions":"2",
-                "locationFrom":"Britan",
-                "locationTo":"USA",
-                "quantity":"100",
-                "currency":"usd",
-                "transactionDate":"31/12/2020",
-                "status":"done"
-                }
-            ],
-            "auth":{
-                "login":"admin",
-                "password":"admin"
-            }
+            "id": "961a33eb-4a5b-4f8e-a746-6c858aaf1d9e",
+            "name": "Alice Trump",
+            "phone":"+3805022222"
         },
         {
-            "id":"2" ,
-            "firstName":"Peter",
-            "lastName":"Smit",
-            "phoneNumber":"+380789000",
-            "transactions":[
-                {
-                "idTransactions":"1",
-                "locationFrom":"Ukraine",
-                "locationTo":"Ukraine",
-                "quantity":"10444000",
-                "currency":"usd",
-                "transactionDate":"24/12/2020",
-                "status":"done"
-                },{
-                "idTransactions":"2",
-                "locationFrom":"USA",
-                "locationTo":"USA",
-                "quantity":"100",
-                "currency":"usd",
-                "transactionDate":"11/12/2020",
-                "status":"done"
-                }
-            ],
-            "locationFrom":"Ukraine",
-            "locationTo":"Poland",
-            "quantity":"15000",
-            "currency":"eur",
-            "status":"done",
-            "auth":{
-                "login":"peter",
-                "password":"peter"
-            }
+            "id": "111a33eb-7a9b-3f8e-a222-1c888aaf1d0e",
+            "name": "Bobby Fish",
+            "phone":"+380501111111"
         }
+    ],
+    "clients":[
+        {
+            "id": "4100fa02-cf7a-4d80-ac72-36ffa6874a23",
+            "transDt": {"date":{
+            "year":"2022","month":"03","day":"11"},
+            "time": {"hour":"16","minutes":"14","seconds":"22"}
+            },
+             "transAmount": 0,
+             "transInfo": "Opening wallet account",
+             "accId": "75384d72-e6bf-4202-87eb-53c327135ec0",
+             "balanceBefore": 0,
+             "bonusAmount": 0,
+             "changeAmount": 0,
+             "feeAmount": 0,
+             "operDt": {"date": {}, "time": {}},
+             "operId": "5a4d1c80-cb48-45a3-8046-fb260a230900",
+             "operInfo": "Opening wallet account",
+             "operType": "acczs_new",
+             "originalAmount": "0.00",
+             "originalCurrencyType": "vc",
+             "originalCurrencyValue": "ZSC",
+            "otherAccInfo": "Wallet account",
+            "otherId": "961a33eb-4a5b-4f8e-a746-6c858aaf1d9e",
+            "otherName": "Alice Trump",
+            "otherType": "acczs",
+            "userId": "961a33eb-4a5b-4f8e-a746-6c858aaf1d9e"
+        },
+      {    
+        "id": "5500fa02-cf7a-4d80-ac72-36ffa6874a23",
+        "transDt": {"date": {}, "time": {}},
+         "transAmount": 0,
+         "transInfo": "Opening wallet account",
+         "accId": "85384d72-e6bf-4202-87eb-53c327135ec0",
+         "balanceBefore": 0,
+         "bonusAmount": 0,
+         "changeAmount": 0,
+         "feeAmount": 0,
+         "operDt": {"date": {}, "time": {}},
+         "operId": "4a4d1c80-cb48-45a3-8046-fb260a230900",
+         "operInfo": "Opening wallet account",
+         "operType": "acczs_new",
+         "originalAmount": "0.00",
+         "originalCurrencyType": "vc",
+         "originalCurrencyValue": "ZSC",
+        "otherAccInfo": "Wallet account",
+        "otherId": "111a33eb-7a9b-3f8e-a222-1c888aaf1d0e",
+        "otherName": "Bobby Fish",
+        "otherType": "acczs",
+        "userId": "111a33eb-7a9b-3f8e-a222-1c888aaf1d0e"
+    }
     ]
 }

@@ -4,9 +4,10 @@ import {
   GET_CLIENT_DATA,
   IS_AUTH_MANAGER,
   IS_FIND_CLIENT,
+  GET_NAMES_CLIENTS,
   GET_SELECTED_TRANSACTION,
   IS_CHECK_DETAIL_INFO,
-  GET_CLIENT_BY_PHONE_NUMBER,
+  GET_CLIENT_BY_ID_USER,
 } from '../createTypes';
 
 export function getClientsAction(payload) {
@@ -24,12 +25,15 @@ export function isAuthManagerAction(payload) {
 export function isQuerySendAction(payload) {
   return { type: IS_QUERY, payload };
 }
-export function getClientByPhoneNumber(payload) {
-  return { type: GET_CLIENT_BY_PHONE_NUMBER, payload };
+export function getClientByIdUser(payload) {
+  return { type: GET_CLIENT_BY_ID_USER, payload };
 }
 export function isCheckDetailInfoAction(payload) {
   return { type: IS_CHECK_DETAIL_INFO, payload };
 }
 export function isFindClient(payload) {
   return { type: IS_FIND_CLIENT, payload };
+}
+export function getNamesClients(payload) {
+  return { type: GET_NAMES_CLIENTS, payload };
 }

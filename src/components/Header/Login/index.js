@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getDataClients } from '../../useAxios';
 import { useDispatch, useSelector } from 'react-redux';
 import { isAuthManagerAction } from '../../../store/createActions';
 import { getStateIsAuthManager } from '../selectors';
@@ -8,8 +9,8 @@ const Login = () => {
   const dispatch = useDispatch();
   const isAuthManager = useSelector(getStateIsAuthManager);
   const [show, setShow] = useState(false);
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
+  const [login, setLogin] = useState('admin');
+  const [password, setPassword] = useState('admin');
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -55,15 +56,17 @@ const Login = () => {
                 variant="primary"
                 // type="submit"
                 onClick={() => {
+                  console.log('password', password, ' -- ', login);
                   if (login === 'admin' && password === 'admin') {
+                    //dispatch(getDataClients());
                     dispatch(isAuthManagerAction(true));
-                    setLogin('');
-                    setPassword('');
+                    // setLogin('');
+                    // setPassword('');
                     return handleClose();
                   }
                   alert("You aren't a manager");
-                  setLogin('');
-                  setPassword('');
+                  // setLogin('');
+                  // setPassword('');
                   dispatch(isAuthManagerAction(false));
                 }}
               >

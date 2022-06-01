@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import {
   isAuthManagerAction,
   isQuerySendAction,
-  getClientByPhoneNumber,
+  getClientByIdUser,
 } from '../../../store/createActions';
 
 const Logout = () => {
@@ -14,7 +14,7 @@ const Logout = () => {
         onClick={() => {
           dispatch(isAuthManagerAction(false));
           dispatch(isQuerySendAction(false));
-          dispatch(getClientByPhoneNumber(null));
+          dispatch(getClientByIdUser(null));
         }}
       >
         Log out

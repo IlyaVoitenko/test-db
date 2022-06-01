@@ -4,16 +4,18 @@ import {
   GET_CLIENT_DATA,
   IS_FIND_CLIENT,
   IS_AUTH_MANAGER,
+  GET_NAMES_CLIENTS,
   IS_CHECK_DETAIL_INFO,
   GET_SELECTED_TRANSACTION,
-  GET_CLIENT_BY_PHONE_NUMBER,
+  GET_CLIENT_BY_ID_USER,
 } from '../createTypes';
 
 const initialState = {
   clients: [],
+  namesClients: null,
   clientData: null,
   isAuthManager: false,
-  clientByPhoneNumber: null,
+  clientByIdUser: null,
   isQuerySend: false,
   isCheckDetailInfo: false,
   isFindClient: false,
@@ -24,18 +26,20 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_CLIENTS:
       return { ...state, clients: [...action.payload] };
+    case GET_NAMES_CLIENTS:
+      return { ...state, namesClients: action.payload };
     case IS_CHECK_DETAIL_INFO:
       return { ...state, isCheckDetailInfo: action.payload };
     case IS_FIND_CLIENT:
       return { ...state, isFindClient: action.payload };
     case IS_AUTH_MANAGER:
       return { ...state, isAuthManager: action.payload };
-    case GET_CLIENT_BY_PHONE_NUMBER:
+    case GET_CLIENT_BY_ID_USER:
       return {
         ...state,
-        clientByPhoneNumber: state.clients.find(
-          (item) => item.phoneNumber === action.payload
-        ),
+        clientByIdUser: state.clients.find((item) => {
+          return item.userId === action.payload;
+        }),
       };
     case IS_QUERY:
       return { ...state, isQuerySend: action.payload };
