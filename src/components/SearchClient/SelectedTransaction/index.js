@@ -36,7 +36,7 @@ const SelectedTransaction = () => {
             <td>{nameClient ? nameClient.name : null}</td>
           </tr>
           <tr>
-            <td>Q-ty Currency :</td>
+            <td>Q-ty :</td>
             <td>
               {originalAmount} {originalCurrencyValue}
             </td>

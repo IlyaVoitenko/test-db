@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import style from './Login.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { isAuthManagerAction } from '../../../store/createActions';
 import { getStateIsAuthManager } from '../selectors';
@@ -17,12 +18,14 @@ const Login = () => {
   return (
     <>
       <Button
+        className={style.btnLogin}
         variant="primary"
         onClick={handleShow}
         disabled={isAuthManager ? true : false}
       >
         Log in
       </Button>
+
       <Form>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
