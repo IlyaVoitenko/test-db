@@ -41,7 +41,7 @@ const Transactions = () => {
                 <td>{item.originalCurrencyValue}</td>
                 {
                   <td>
-                    {item.userId === item.id ? ' Отправитель' : 'Получатель'}
+                    {item.userId === item.id ? 'Получатель' : 'Отправитель'}
                   </td>
                 }
               </tr>

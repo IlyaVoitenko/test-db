@@ -55,24 +55,23 @@ const SelectedTransaction = () => {
             <td>
               {selectedTransaction.transDt
                 ? selectedTransaction.transDt.date.year
-                : null}{' '}
+                : null}
               -
               {selectedTransaction.transDt
                 ? selectedTransaction.transDt.date.month
-                : null}{' '}
+                : null}
               -
               {selectedTransaction.transDt
                 ? selectedTransaction.transDt.date.day
                 : null}{' '}
-              -
               {selectedTransaction.transDt
                 ? selectedTransaction.transDt.time.hour
-                : null}{' '}
-              -
+                : null}
+              :
               {selectedTransaction.transDt
                 ? selectedTransaction.transDt.time.minute
-                : null}{' '}
-              -
+                : null}
+              :
               {selectedTransaction.transDt
                 ? selectedTransaction.transDt.time.second
                 : null}

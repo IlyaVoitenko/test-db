@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { getStateClientByIdUser } from '../MainPage/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { getClientByNumberPhone } from '../useAxios';
+import { getStateNameClient } from '../SearchClient/Transactions/selectors';
 import {
   isQuerySendAction,
   isCheckDetailInfoAction,
@@ -12,6 +13,7 @@ const SearchClient = () => {
   const dispatch = useDispatch();
   const clientByIdUser = useSelector(getStateClientByIdUser);
   const [numberPhoneClient, setNumberPhoneClient] = useState('');
+  const nameClient = useSelector(getStateNameClient);
 
   function phone(name) {
     var r = /([0-9])+/g,
@@ -30,8 +32,11 @@ const SearchClient = () => {
 
   return (
     <div>
-      <p>Example phone number : +3805022222</p>
-      <input onChange={({ target }) => setNumberPhoneClient(target.value)} />
+      {nameClient !== null ? <span>{nameClient.name} </span> : null}
+      <input
+        onChange={({ target }) => setNumberPhoneClient(target.value)}
+        placeholder="+3805022222"
+      />
       <button
         onClick={() => {
           dispatch(isCheckDetailInfoAction(false));
