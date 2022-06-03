@@ -36,7 +36,7 @@ const Transactions = () => {
                   {item?.transDt.date.day}-{item?.transDt.time.hour}-
                   {item?.transDt.time.minute}-{item?.transDt.time.second}
                 </td>
-                <td>{item.operType}</td>
+                <td>{item.operInfo}</td>
                 <td>{item.originalAmount}</td>
                 <td>{item.originalCurrencyValue}</td>
                 {

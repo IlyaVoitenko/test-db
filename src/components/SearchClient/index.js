@@ -32,11 +32,13 @@ const SearchClient = () => {
 
   return (
     <div>
+      <br></br>
       {nameClient !== null ? <span>{nameClient.name} </span> : null}
       <input
         onChange={({ target }) => setNumberPhoneClient(target.value)}
         placeholder="+3805022222"
       />
+
       <button
         onClick={() => {
           dispatch(isCheckDetailInfoAction(false));

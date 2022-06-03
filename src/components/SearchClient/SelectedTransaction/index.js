@@ -16,10 +16,11 @@ const SelectedTransaction = () => {
     id,
     originalAmount,
     originalCurrencyValue,
-    locationTo,
     status,
-    locationFrom,
+    operInfo,
+    transInfo,
   } = selectedTransaction || {};
+  console.log(selectedTransaction);
 
   return isCheckDetailInfo ? (
     <div className={style.container}>
@@ -35,20 +36,18 @@ const SelectedTransaction = () => {
             <td>{nameClient ? nameClient.name : null}</td>
           </tr>
           <tr>
-            <td>Q-ty :</td>
-            <td>{originalAmount}</td>
+            <td>Q-ty Currency :</td>
+            <td>
+              {originalAmount} {originalCurrencyValue}
+            </td>
           </tr>
           <tr>
-            <td>Currency :</td>
-            <td>{originalCurrencyValue}</td>
+            <td>Operation :</td>
+            <td>{operInfo}</td>
           </tr>
           <tr>
-            <td>location From :</td>
-            <td>{locationFrom}</td>
-          </tr>
-          <tr>
-            <td>location To :</td>
-            <td>{locationTo}</td>
+            <td>Transaction Info :</td>
+            <td>{transInfo}</td>
           </tr>
           <tr>
             <td>Date :</td>
