@@ -34,6 +34,6 @@ export function isCheckDetailInfoAction(payload) {
 export function isFindClient(payload) {
   return { type: IS_FIND_CLIENT, payload };
 }
-export function getNamesClients(payload) {
+export function getNameClient(payload) {
   return { type: GET_NAMES_CLIENTS, payload };
 }

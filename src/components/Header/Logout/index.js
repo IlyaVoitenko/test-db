@@ -4,6 +4,7 @@ import {
   isAuthManagerAction,
   isQuerySendAction,
   getClientByIdUser,
+  getNameClient,
 } from '../../../store/createActions';
 
 const Logout = () => {
@@ -12,6 +13,7 @@ const Logout = () => {
     <div>
       <Button
         onClick={() => {
+          dispatch(getNameClient(null));
           dispatch(isAuthManagerAction(false));
           dispatch(isQuerySendAction(false));
           dispatch(getClientByIdUser(null));

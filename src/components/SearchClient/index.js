@@ -1,19 +1,15 @@
 import { useState } from 'react';
-import { getStateClientByIdUser } from '../MainPage/selectors'; //getStateClientByIdUser
-import { getStateNameClient } from './Transactions/selectors';
-import { getStateIsAuthManager } from '../Header/selectors';
+import { getStateClientByIdUser } from '../MainPage/selectors';
 import { useDispatch, useSelector } from 'react-redux';
+import { getClientByNumberPhone } from '../useAxios';
 import {
   isQuerySendAction,
-  getClientByIdUser,
   isCheckDetailInfoAction,
-  getNamesClients,
   isFindClient,
 } from '../../store/createActions';
 
 const SearchClient = () => {
   const dispatch = useDispatch();
-  const nameClient = useSelector(getStateNameClient);
   const clientByIdUser = useSelector(getStateClientByIdUser);
   const [numberPhoneClient, setNumberPhoneClient] = useState('');
 
@@ -35,24 +31,13 @@ const SearchClient = () => {
   return (
     <div>
       <p>Example phone number : +3805022222</p>
-      <input
-        type="tel"
-        onChange={({ target }) => setNumberPhoneClient(target.value)}
-      />
+      <input onChange={({ target }) => setNumberPhoneClient(target.value)} />
       <button
         onClick={() => {
           dispatch(isCheckDetailInfoAction(false));
           dispatch(isFindClient(false));
           dispatch(isQuerySendAction(true));
-          if (numberPhoneClient === '+3805022222') {
-            dispatch(
-              getNamesClients({
-                id: '961a33eb-4a5b-4f8e-a746-6c858aaf1d9e',
-                name: 'Alice Trump',
-              })
-            );
-            dispatch(getClientByIdUser(nameClient.id));
-          }
+          dispatch(getClientByNumberPhone(phone(numberPhoneClient)));
           if (clientByIdUser !== {} || clientByIdUser !== null) {
             return dispatch(isFindClient(true));
           }

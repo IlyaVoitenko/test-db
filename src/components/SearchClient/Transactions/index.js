@@ -1,18 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Table } from 'react-bootstrap';
-import {
-  getSelectedTransactionAction,
-  isCheckDetailInfoAction,
-} from '../../../store/createActions';
+import { getDetailTransaction } from '../../useAxios';
+import { isCheckDetailInfoAction } from '../../../store/createActions';
 import { getStateClientByIdUser } from '../../MainPage/selectors';
 import style from './Transactions.module.css';
 
 const Transactions = () => {
   const dispatch = useDispatch();
-  const clientByIdUser = useSelector(getStateClientByIdUser);
-  const { originalAmount, originalCurrencyValue, operType, otherId } =
-    clientByIdUser || [];
-  return clientByIdUser ? (
+  const transactionsClient = useSelector(getStateClientByIdUser);
+
+  return transactionsClient ? (
     <div className={style.container}>
       <Table hover>
         <thead>
@@ -25,46 +22,31 @@ const Transactions = () => {
           </tr>
         </thead>
         <tbody>
-          <tr
-            //  key={transaction.idTransactions}
-            onClick={() => {
-              // dispatch(
-              //   getSelectedTransactionAction(transaction.idTransactions)
-              // );
-              //dispatch(isCheckDetailInfoAction(true));
-            }}
-          >
-            <td>
-              {clientByIdUser?.transDt.date.year}-
-              {clientByIdUser?.transDt.date.month}-
-              {clientByIdUser?.transDt.date.day}-
-              {clientByIdUser?.transDt.time.hour}-
-              {clientByIdUser?.transDt.time.minutes}-
-              {clientByIdUser?.transDt.time.seconds}
-            </td>
-            <td>{operType}</td>
-            <td>{originalAmount}</td>
-            <td>{originalCurrencyValue}</td>
-            <td>{otherId.length !== 0 ? ' Отправитель' : 'Получатель'}</td>
-          </tr>
-          {/* {clientByIdUser.map((transaction) => {
+          {transactionsClient.map((item) => {
             return (
               <tr
-                key={transaction.idTransactions}
+                key={item.id}
                 onClick={() => {
-                  dispatch(
-                    getSelectedTransactionAction(transaction.idTransactions)
-                  );
+                  dispatch(getDetailTransaction(item.id));
                   dispatch(isCheckDetailInfoAction(true));
                 }}
               >
-                <td>{otherName}</td>
-                <td></td>
-                <td>{transaction.quantity}</td>
-                <td>{transaction.currency}</td>
+                <td>
+                  {item?.transDt.date.year}-{item?.transDt.date.month}-
+                  {item?.transDt.date.day}-{item?.transDt.time.hour}-
+                  {item?.transDt.time.minute}-{item?.transDt.time.second}
+                </td>
+                <td>{item.operType}</td>
+                <td>{item.originalAmount}</td>
+                <td>{item.originalCurrencyValue}</td>
+                {
+                  <td>
+                    {item.userId === item.id ? ' Отправитель' : 'Получатель'}
+                  </td>
+                }
               </tr>
             );
-          })} */}
+          })}
         </tbody>
       </Table>
     </div>

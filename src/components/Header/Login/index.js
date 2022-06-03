@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { getDataClients } from '../../useAxios';
 import { useDispatch, useSelector } from 'react-redux';
 import { isAuthManagerAction } from '../../../store/createActions';
 import { getStateIsAuthManager } from '../selectors';
@@ -56,9 +55,7 @@ const Login = () => {
                 variant="primary"
                 // type="submit"
                 onClick={() => {
-                  console.log('password', password, ' -- ', login);
                   if (login === 'admin' && password === 'admin') {
-                    //dispatch(getDataClients());
                     dispatch(isAuthManagerAction(true));
                     // setLogin('');
                     // setPassword('');

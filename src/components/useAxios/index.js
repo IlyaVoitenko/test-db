@@ -1,17 +1,39 @@
 import axios from 'axios';
-import { getClientsAction, getNamesClients } from '../../store/createActions';
+import {
+  getNameClient,
+  getClientByIdUser,
+  getSelectedTransactionAction,
+} from '../../store/createActions';
 
-export function getClients() {
+export function getTransactionsClients(idClient) {
   return (dispatch) => {
-    return axios
-      .get(`http://localhost:4001/clients`)
-      .then(({ data }) => dispatch(getClientsAction(data)));
+    axios
+      .get(
+        `http://54.195.25.11:8082/zxs2a/api/v1/mng/transbyuserid/${idClient}`
+      )
+      .then(({ data }) => {
+        return dispatch(getClientByIdUser(data));
+      });
   };
 }
-export function getDataClients() {
+export function getClientByNumberPhone(numberPhoneClient) {
   return (dispatch) => {
     return axios
-      .get(`http://localhost:4001/NamesClients`)
-      .then(({ data }) => dispatch(getNamesClients(data)));
+      .get(
+        `http://54.195.25.11:8082/zxs2a/api/v1/mng/user/${numberPhoneClient}`
+      )
+      .then(({ data }) => {
+        dispatch(getNameClient(data));
+        dispatch(getTransactionsClients(data.id));
+      })
+      .catch((err) => console.warn(err));
+  };
+}
+export function getDetailTransaction(id) {
+  return (dispatch) => {
+    return axios
+      .get(`http://54.195.25.11:8082/zxs2a/api/v1/mng/transbytrid/${id}`)
+      .then(({ data }) => dispatch(getSelectedTransactionAction(data.value)))
+      .catch((err) => console.warn(err));
   };
 }

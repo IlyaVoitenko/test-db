@@ -4,20 +4,18 @@ import {
   getStateIsCheckDetailInfo,
   getStateSelectedTransaction,
 } from './selectors';
-import { getStateClientByIdUser } from '../../MainPage/selectors';
+import { getStateNameClient } from '../Transactions/selectors';
+
 import { Table } from 'react-bootstrap';
 
 const SelectedTransaction = () => {
   const selectedTransaction = useSelector(getStateSelectedTransaction);
-  const clientByIdUser = useSelector(getStateClientByIdUser);
   const isCheckDetailInfo = useSelector(getStateIsCheckDetailInfo);
-
-  const { firstName, lastName } = clientByIdUser || {};
+  const nameClient = useSelector(getStateNameClient);
   const {
-    transactionDate,
-    idTransactions,
-    quantity,
-    currency,
+    id,
+    originalAmount,
+    originalCurrencyValue,
     locationTo,
     status,
     locationFrom,
@@ -30,23 +28,19 @@ const SelectedTransaction = () => {
         <tbody>
           <tr>
             <td>ID :</td>
-            <td>{idTransactions}</td>
+            <td>{id}</td>
           </tr>
           <tr>
-            <td>firstName :</td>
-            <td>{firstName}</td>
-          </tr>
-          <tr>
-            <td>lastName :</td>
-            <td>{lastName}</td>
+            <td>Name :</td>
+            <td>{nameClient ? nameClient.name : null}</td>
           </tr>
           <tr>
             <td>Q-ty :</td>
-            <td>{quantity}</td>
+            <td>{originalAmount}</td>
           </tr>
           <tr>
             <td>Currency :</td>
-            <td>{currency}</td>
+            <td>{originalCurrencyValue}</td>
           </tr>
           <tr>
             <td>location From :</td>
@@ -58,7 +52,31 @@ const SelectedTransaction = () => {
           </tr>
           <tr>
             <td>Date :</td>
-            <td>{transactionDate}</td>
+            <td>
+              {selectedTransaction.transDt
+                ? selectedTransaction.transDt.date.year
+                : null}{' '}
+              -
+              {selectedTransaction.transDt
+                ? selectedTransaction.transDt.date.month
+                : null}{' '}
+              -
+              {selectedTransaction.transDt
+                ? selectedTransaction.transDt.date.day
+                : null}{' '}
+              -
+              {selectedTransaction.transDt
+                ? selectedTransaction.transDt.time.hour
+                : null}{' '}
+              -
+              {selectedTransaction.transDt
+                ? selectedTransaction.transDt.time.minute
+                : null}{' '}
+              -
+              {selectedTransaction.transDt
+                ? selectedTransaction.transDt.time.second
+                : null}
+            </td>
           </tr>
           <tr>
             <td>Status :</td>

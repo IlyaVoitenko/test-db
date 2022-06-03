@@ -12,7 +12,7 @@ import {
 
 const initialState = {
   clients: [],
-  namesClients: null,
+  nameClient: null,
   clientData: null,
   isAuthManager: false,
   clientByIdUser: null,
@@ -27,7 +27,7 @@ const reducer = (state = initialState, action) => {
     case GET_CLIENTS:
       return { ...state, clients: [...action.payload] };
     case GET_NAMES_CLIENTS:
-      return { ...state, namesClients: action.payload };
+      return { ...state, nameClient: action.payload };
     case IS_CHECK_DETAIL_INFO:
       return { ...state, isCheckDetailInfo: action.payload };
     case IS_FIND_CLIENT:
@@ -37,9 +37,7 @@ const reducer = (state = initialState, action) => {
     case GET_CLIENT_BY_ID_USER:
       return {
         ...state,
-        clientByIdUser: state.clients.find((item) => {
-          return item.userId === action.payload;
-        }),
+        clientByIdUser: [...action.payload],
       };
     case IS_QUERY:
       return { ...state, isQuerySend: action.payload };
@@ -55,9 +53,7 @@ const reducer = (state = initialState, action) => {
     case GET_SELECTED_TRANSACTION:
       return {
         ...state,
-        selectedTransaction: state.clientByPhoneNumber.transactions.find(
-          (item) => item.idTransactions === action.payload
-        ),
+        selectedTransaction: action.payload,
       };
     default:
       return state;
