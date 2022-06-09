@@ -31,7 +31,7 @@ export function getClientByIdUser(payload) {
 export function isCheckDetailInfoAction(payload) {
   return { type: IS_CHECK_DETAIL_INFO, payload };
 }
-export function isFindClient(payload) {
+export function isFoundClient(payload) {
   return { type: IS_FIND_CLIENT, payload };
 }
 export function getNameClient(payload) {

@@ -21,6 +21,8 @@ const initialState = {
   isFindClient: false,
   selectedTransaction: {},
 };
+// check user name
+// хранить инфо в обьекте юзер и делать проверку на имя админа
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {

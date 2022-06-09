@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Table } from 'react-bootstrap';
-import { getDetailTransaction } from '../../useAxios';
-import { isCheckDetailInfoAction } from '../../../store/createActions';
+import { detailByTransaction } from './helper';
+
 import { getStateClientByIdUser } from '../../MainPage/selectors';
 import style from './Transactions.module.css';
+import TransactionDate from '../TransactionDate';
 
 const Transactions = () => {
   const dispatch = useDispatch();
@@ -26,16 +27,9 @@ const Transactions = () => {
             return (
               <tr
                 key={item.id}
-                onClick={() => {
-                  dispatch(getDetailTransaction(item.id));
-                  dispatch(isCheckDetailInfoAction(true));
-                }}
+                onClick={() => dispatch(detailByTransaction(item.id))}
               >
-                <td>
-                  {item?.transDt.date.year}-{item?.transDt.date.month}-
-                  {item?.transDt.date.day}-{item?.transDt.time.hour}-
-                  {item?.transDt.time.minute}-{item?.transDt.time.second}
-                </td>
+                <TransactionDate dateTransaction={item.transDt} />
                 <td>{item.operInfo}</td>
                 <td>{item.originalAmount}</td>
                 <td>{item.originalCurrencyValue}</td>

@@ -1,12 +1,7 @@
 import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import style from './Logout.module.css';
-import {
-  isAuthManagerAction,
-  isQuerySendAction,
-  getClientByIdUser,
-  getNameClient,
-} from '../../../store/createActions';
+import { LogOutManager } from '../helper';
 
 const Logout = () => {
   const dispatch = useDispatch();
@@ -14,12 +9,7 @@ const Logout = () => {
     <div>
       <Button
         className={style.btnLogOut}
-        onClick={() => {
-          dispatch(getNameClient(null));
-          dispatch(isAuthManagerAction(false));
-          dispatch(isQuerySendAction(false));
-          dispatch(getClientByIdUser(null));
-        }}
+        onClick={() => dispatch(LogOutManager())}
       >
         Log out
       </Button>

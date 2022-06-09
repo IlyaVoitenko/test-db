@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import TransactionDate from '../TransactionDate';
 import style from './SelectedTransaction.module.css';
 import {
   getStateIsCheckDetailInfo,
@@ -20,7 +21,6 @@ const SelectedTransaction = () => {
     operInfo,
     transInfo,
   } = selectedTransaction || {};
-  console.log(selectedTransaction);
 
   return isCheckDetailInfo ? (
     <div className={style.container}>
@@ -51,30 +51,9 @@ const SelectedTransaction = () => {
           </tr>
           <tr>
             <td>Date :</td>
-            <td>
-              {selectedTransaction.transDt
-                ? selectedTransaction.transDt.date.year
-                : null}
-              -
-              {selectedTransaction.transDt
-                ? selectedTransaction.transDt.date.month
-                : null}
-              -
-              {selectedTransaction.transDt
-                ? selectedTransaction.transDt.date.day
-                : null}{' '}
-              {selectedTransaction.transDt
-                ? selectedTransaction.transDt.time.hour
-                : null}
-              :
-              {selectedTransaction.transDt
-                ? selectedTransaction.transDt.time.minute
-                : null}
-              :
-              {selectedTransaction.transDt
-                ? selectedTransaction.transDt.time.second
-                : null}
-            </td>
+            {selectedTransaction.transDt ? (
+              <TransactionDate dateTransaction={selectedTransaction.transDt} />
+            ) : null}
           </tr>
           <tr>
             <td>Status :</td>
